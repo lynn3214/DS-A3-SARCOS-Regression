@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "all_validation_and_test_MAE_RMSE_R2_match": true,
+  "metric_comparisons": 36,
+  "maximum_absolute_metric_delta": 0.0,
+  "selected_alphas_match": true,
+  "slice_thresholds_and_counts_match": true,
+  "slice_metric_comparisons": 36,
+  "maximum_absolute_slice_metric_delta": 0.0,
+  "tolerance": {
+    "rtol": 1e-09,
+    "atol": 1e-09
+  }
+}

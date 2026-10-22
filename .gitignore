@@ -1,0 +1,18 @@
+# Third-party original datasets
+data/raw/*.mat
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments and local secrets
+.venv/
+venv/
+.env
+
+# System files
+.DS_Store

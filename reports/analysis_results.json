@@ -1,0 +1,364 @@
+{
+  "python": "3.10.18",
+  "numpy": "2.2.6",
+  "pandas": "2.3.1",
+  "scipy": "1.15.2",
+  "scikit_learn": "1.7.1",
+  "dataset_sha256": "b8a249733253ba6097372fedee7696833fcf30de42037d5b4a7227f21a6d1d97",
+  "data_quality": {
+    "shape": [
+      44484,
+      28
+    ],
+    "dtypes": [
+      "float64"
+    ],
+    "missing": 0,
+    "infinite": 0,
+    "duplicate_rows": 0,
+    "constant_columns": [],
+    "target_describe": {
+      "count": 44484.0,
+      "mean": 13.653835065169499,
+      "std": 20.464791323575792,
+      "min": -94.876411,
+      "25%": 1.087409,
+      "50%": 12.81033,
+      "75%": 25.825956,
+      "max": 121.381996
+    }
+  },
+  "split_distributions": {
+    "blocked": {
+      "train": {
+        "n": 26665,
+        "target_mean": 13.367638489893118,
+        "target_sd": 22.44499128184875,
+        "velocity_norm_median": 2.3017609289383203,
+        "acceleration_norm_median": 21.96144759673665
+      },
+      "val": {
+        "n": 8847,
+        "target_mean": 15.61048698474059,
+        "target_sd": 18.806062559910043,
+        "velocity_norm_median": 0.36361598755830304,
+        "acceleration_norm_median": 5.4212393988075265
+      },
+      "test": {
+        "n": 8872,
+        "target_mean": 12.619171681807936,
+        "target_sd": 15.020916681935901,
+        "velocity_norm_median": 2.224213816439154,
+        "acceleration_norm_median": 24.6873028316912
+      }
+    },
+    "random": {
+      "train": {
+        "n": 26690,
+        "target_mean": 13.586048572274262,
+        "target_sd": 20.563674015078586,
+        "velocity_norm_median": 2.034376013802963,
+        "acceleration_norm_median": 19.647726733835007
+      },
+      "val": {
+        "n": 8897,
+        "target_mean": 13.971599945262449,
+        "target_sd": 20.334155520610487,
+        "velocity_norm_median": 2.026623826822087,
+        "acceleration_norm_median": 19.418682923596748
+      },
+      "test": {
+        "n": 8897,
+        "target_mean": 13.539422044734179,
+        "target_sd": 20.292658908452477,
+        "velocity_norm_median": 2.011821634023504,
+        "acceleration_norm_median": 19.486616398437903
+      }
+    }
+  },
+  "scores": {
+    "blocked": {
+      "validation": {
+        "Dummy mean": {
+          "MAE": 14.154143885340245,
+          "RMSE": 18.93933363078252,
+          "R2": -0.014223422891508575
+        },
+        "OLS": {
+          "MAE": 3.6590867944183305,
+          "RMSE": 5.1753706015514105,
+          "R2": 0.9242666520693974
+        },
+        "Ridge": {
+          "MAE": 3.6590888413719376,
+          "RMSE": 5.175372505408477,
+          "R2": 0.9242665963495245
+        }
+      },
+      "test": {
+        "Dummy mean": {
+          "MAE": 11.631206552986292,
+          "RMSE": 15.07769096509336,
+          "R2": -0.007573649294520202
+        },
+        "OLS": {
+          "MAE": 3.86496588532918,
+          "RMSE": 5.339591001629635,
+          "R2": 0.8736360739642824
+        },
+        "Ridge": {
+          "MAE": 3.8649657690933616,
+          "RMSE": 5.3395907750308105,
+          "R2": 0.8736360846894171
+        }
+      },
+      "selected_ridge_alpha": 0.001,
+      "ridge_validation_mae_by_alpha": {
+        "0.001": 3.6590888413719376,
+        "0.01": 3.6591072636040405,
+        "0.1": 3.6592914512276815,
+        "1": 3.6611298662112635,
+        "10": 3.679261623793524,
+        "100": 3.838380398206068,
+        "1000": 4.697640489165913
+      }
+    },
+    "random": {
+      "validation": {
+        "Dummy mean": {
+          "MAE": 15.327957794860145,
+          "RMSE": 20.33781036880782,
+          "R2": -0.00035951103587028577
+        },
+        "OLS": {
+          "MAE": 3.9461456342883534,
+          "RMSE": 5.54601272733324,
+          "R2": 0.9256108764102107
+        },
+        "Ridge": {
+          "MAE": 3.9461457369843367,
+          "RMSE": 5.546012731037935,
+          "R2": 0.925610876310828
+        }
+      },
+      "test": {
+        "Dummy mean": {
+          "MAE": 15.306403358499141,
+          "RMSE": 20.29316287471638,
+          "R2": -4.967042753278861e-05
+        },
+        "OLS": {
+          "MAE": 3.9471448404997607,
+          "RMSE": 5.570032879957228,
+          "R2": 0.9246579198629699
+        },
+        "Ridge": {
+          "MAE": 3.947144861928976,
+          "RMSE": 5.570032842268872,
+          "R2": 0.9246579208825398
+        }
+      },
+      "selected_ridge_alpha": 0.001,
+      "ridge_validation_mae_by_alpha": {
+        "0.001": 3.9461457369843367,
+        "0.01": 3.9461466612310527,
+        "0.1": 3.9461559020015566,
+        "1": 3.946248806269105,
+        "10": 3.9472208821717967,
+        "100": 3.9618925814734274,
+        "1000": 4.21841575284754
+      }
+    }
+  },
+  "error_slices": {
+    "velocity_norm": {
+      "training_quartile_edges": [
+        0.01240188663067035,
+        1.4406879236489767,
+        2.3017609289383203,
+        2.9948088997408497,
+        6.321655387531893
+      ],
+      "training_minimum": 0.01240188663067035,
+      "training_maximum": 6.321655387531893,
+      "outside_training_range_count": 0,
+      "effective_slice_count": 4,
+      "test_bins": [
+        {
+          "interval": [
+            0.01240188663067035,
+            1.4406879236489767
+          ],
+          "interval_label": "(-inf, 1.44069]",
+          "n": 2552,
+          "MAE": 4.69699256658675,
+          "RMSE": 6.646501559496886,
+          "mean_signed_residual": 0.757316392012207
+        },
+        {
+          "interval": [
+            1.4406879236489767,
+            2.3017609289383203
+          ],
+          "interval_label": "(1.44069, 2.30176]",
+          "n": 2110,
+          "MAE": 3.5896452030908166,
+          "RMSE": 4.970201243328259,
+          "mean_signed_residual": 0.40702304199975714
+        },
+        {
+          "interval": [
+            2.3017609289383203,
+            2.9948088997408497
+          ],
+          "interval_label": "(2.30176, 2.99481]",
+          "n": 2366,
+          "MAE": 3.4456243331072116,
+          "RMSE": 4.517211528462494,
+          "mean_signed_residual": 0.447498854811925
+        },
+        {
+          "interval": [
+            2.9948088997408497,
+            6.321655387531893
+          ],
+          "interval_label": "(2.99481, +inf)",
+          "n": 1844,
+          "MAE": 3.566568721699364,
+          "RMSE": 4.6465471177859445,
+          "mean_signed_residual": -0.06105262181399441
+        }
+      ]
+    },
+    "acceleration_norm": {
+      "training_quartile_edges": [
+        0.1697790705122395,
+        13.830779817565784,
+        21.96144759673665,
+        31.18078882040323,
+        91.17501010000655
+      ],
+      "training_minimum": 0.1697790705122395,
+      "training_maximum": 91.17501010000655,
+      "outside_training_range_count": 0,
+      "effective_slice_count": 4,
+      "test_bins": [
+        {
+          "interval": [
+            0.1697790705122395,
+            13.830779817565784
+          ],
+          "interval_label": "(-inf, 13.8308]",
+          "n": 1922,
+          "MAE": 3.132737819672247,
+          "RMSE": 4.062079999979641,
+          "mean_signed_residual": -0.22941691035774536
+        },
+        {
+          "interval": [
+            13.830779817565784,
+            21.96144759673665
+          ],
+          "interval_label": "(13.8308, 21.9614]",
+          "n": 1891,
+          "MAE": 3.5183062139584096,
+          "RMSE": 4.605683980382688,
+          "mean_signed_residual": 0.2845160012486188
+        },
+        {
+          "interval": [
+            21.96144759673665,
+            31.18078882040323
+          ],
+          "interval_label": "(21.9614, 31.1808]",
+          "n": 2624,
+          "MAE": 4.095413001574005,
+          "RMSE": 5.492263914003106,
+          "mean_signed_residual": -0.34356442539245186
+        },
+        {
+          "interval": [
+            31.18078882040323,
+            91.17501010000655
+          ],
+          "interval_label": "(31.1808, +inf)",
+          "n": 2435,
+          "MAE": 4.463808397232321,
+          "RMSE": 6.471301707352313,
+          "mean_signed_residual": 1.8653486252447191
+        }
+      ]
+    },
+    "absolute_torque": {
+      "training_quartile_edges": [
+        0.0,
+        7.114754,
+        15.359648,
+        28.771877,
+        120.97422
+      ],
+      "training_minimum": 0.0,
+      "training_maximum": 120.97422,
+      "outside_training_range_count": 0,
+      "effective_slice_count": 4,
+      "test_bins": [
+        {
+          "interval": [
+            0.0,
+            7.114754
+          ],
+          "interval_label": "(-inf, 7.11475]",
+          "n": 2210,
+          "MAE": 3.2919831246624436,
+          "RMSE": 4.23412650976423,
+          "mean_signed_residual": -1.0545257483125194
+        },
+        {
+          "interval": [
+            7.114754,
+            15.359648
+          ],
+          "interval_label": "(7.11475, 15.3596]",
+          "n": 2541,
+          "MAE": 3.1627867192690227,
+          "RMSE": 4.262763758986973,
+          "mean_signed_residual": -0.22688927866022238
+        },
+        {
+          "interval": [
+            15.359648,
+            28.771877
+          ],
+          "interval_label": "(15.3596, 28.7719]",
+          "n": 2779,
+          "MAE": 3.846191311995822,
+          "RMSE": 5.1742503600605465,
+          "mean_signed_residual": 0.7924539706707693
+        },
+        {
+          "interval": [
+            28.771877,
+            120.97422
+          ],
+          "interval_label": "(28.7719, +inf)",
+          "n": 1342,
+          "MAE": 6.176964894331837,
+          "RMSE": 8.313726899554112,
+          "mean_signed_residual": 3.3103496894537066
+        }
+      ]
+    }
+  },
+  "residual_mean": 0.4212907244020118,
+  "residual_sd": 5.322945027926455,
+  "interpretation": [
+    "H1 supported on Blocked Test: OLS MAE (3.865) is lower than Dummy MAE (11.631).",
+    "H2: Blocked Validation selected alpha=0.001; Ridge and OLS validation MAE are 3.659 and 3.659. The lack of meaningful Ridge improvement applies only to these tested models, this alpha grid, this dataset, and these evaluation protocols.",
+    "H3: high-acceleration Blocked Test MAE (4.464) exceeds low-acceleration MAE (3.133); high-absolute-torque MAE (6.177) exceeds low-absolute-torque MAE (3.292). Velocity-slice MAEs by increasing quartile are [4.697, 3.59, 3.446, 3.567]; they are non-monotonic, and low-velocity MAE (4.697) exceeds highest-velocity MAE (3.567). These are descriptive patterns; no physical mechanism is inferred.",
+    "Random Test OLS MAE is 3.947, compared with 3.865 for Blocked Test. They represent different holdout conditions; this difference alone does not identify its cause."
+  ],
+  "coefficient_abs_mean": {
+    "OLS": 2.973379545518075,
+    "Ridge": 2.973379085843949
+  }
+}
