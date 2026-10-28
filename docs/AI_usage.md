@@ -45,3 +45,31 @@ For the final narrative revision, ChatGPT/Codex used the assignment criteria and
 - `conda run -n nussem1 python -m unittest discover -s tests -v` — run; see the test command output associated with this revision.
 
 Codex-generated extensions and report artifacts were checked computationally against the specified protocols. A student should independently review the new methods and interpretations before submission; this record does not claim that such a review has occurred.
+
+## Student Final Review and Verification
+
+After the AI-assisted implementation and documentation updates, I personally reviewed the final DS-A3 submission.
+
+### Independent Review
+
+I reviewed the research question, dataset selection, feature definitions, frozen evaluation protocol, model comparisons, diagnostic analyses, figures, and conclusions.
+
+I checked the reported results for the Dummy, OLS, and Ridge baselines, together with the exploratory Lasso and HistGradientBoostingRegressor comparisons. I also examined the residual diagnostics, leverage and Cook's distance, Breusch–Pagan test, learning curves, error slices, and individual prediction-error cases.
+
+I confirmed that the interpretations were consistent with the reported evidence and that the analysis did not make unsupported causal or independent-trajectory generalization claims.
+
+I reviewed the final Notebook, PDF report, README, and submission summary for consistency. I also checked that the documented limitations, including historical dataset leakage, temporal dependence, validation distribution shift, unavailable episode identifiers, and unverified physical units and redistribution licensing, were accurately acknowledged.
+
+### Student Decisions and Responsibility
+
+I selected and accepted the final research framing, dataset suitability assessment, interpretation of the findings, and limitations after reviewing the evidence.
+
+AI tools supported implementation, diagnostics, report generation, and documentation, but I did not treat AI-generated outputs as independently verified solely because automated tests passed.
+
+I take responsibility for the final submitted analysis and its interpretation.
+
+### Verification Scope
+
+The final Notebook execution and automated validation results were reported by Codex. My independent contribution consisted of reviewing the resulting evidence and checking that the conclusions were supported by the outputs.
+
+Any analysis not independently rerun or recalculated by me should not be described as independently executed or numerically reproduced by the student.
