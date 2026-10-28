@@ -8,6 +8,8 @@ This project studies prediction of first-joint torque from the SARCOS robot arm 
 
 How accurately can interpretable regularized linear models predict first-joint torque from 21 state features, and under which observed conditions do predictions become less reliable?
 
+Robot inverse dynamics maps a measured configuration and motion state to joint torque, an actuation quantity relevant to control and motion planning. Transparent Dummy, OLS, and Ridge baselines help establish how much predictive signal is captured before adding model flexibility and where errors remain. This project measures predictive performance only; it does not evaluate a controller.
+
 The predictors are seven joint positions, seven velocities, and seven accelerations (columns 0–20). The target is first-joint torque (zero-based column 21). No physical units are asserted.
 
 ## Dataset availability and provenance

@@ -34,6 +34,10 @@ Recommendations not undertaken: no blocked cross-validation or extensive tuning 
 
 The earlier student verification above applies to the original submitted Notebook version only. No independent student verification of these new AI-assisted extensions is claimed. Codex executed the revised Notebook from a fresh kernel and ran the project validator and helper tests in `nussem1`; these automated checks are not student verification.
 
+## Research narrative revision
+
+For the final narrative revision, ChatGPT/Codex used the assignment criteria and existing audited project artifacts to clarify why inverse-dynamics torque prediction is a meaningful regression task, add a compact SARCOS Dataset Card to the Notebook and PDF, and explain the existing primary and exploratory results, diagnostics, and limits. The Notebook change is Markdown-only; no model, split, analysis code, hyperparameter, or result was changed. The PDF and README were aligned with that narrative. Codex preserved the student's manually revised `docs/submission_summary.md` exactly as received. This documentation assistance does not constitute independent student verification of the exploratory analysis; the student should review the final wording and claims.
+
 ## Automated checks for the time-critical extension
 
 - `conda run -n nussem1 jupyter nbconvert --to notebook --execute notebooks/DS_A3_regression_diagnostics.ipynb --output DS_A3_regression_diagnostics.executed.ipynb --output-dir /tmp --ExecutePreprocessor.timeout=600` — completed successfully from a clean kernel.
