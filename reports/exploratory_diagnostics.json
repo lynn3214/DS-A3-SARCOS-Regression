@@ -1,0 +1,232 @@
+{
+  "status": "post-hoc exploratory; no new Test evaluation or tuning",
+  "environment": {
+    "platform": "macOS-15.5-arm64-arm-64bit",
+    "python": "3.10.18",
+    "numpy": "2.2.6",
+    "scipy": "1.15.2",
+    "pandas": "2.3.1",
+    "scikit_learn": "1.7.1"
+  },
+  "historical_overlap": {
+    "aligned_rows": 4449,
+    "exact_all_column_rows": 4446,
+    "within_tolerance_rows": 4449,
+    "predictor_exact_rows": 4449,
+    "max_abs_cell_difference": 4.0000000041118255e-06,
+    "tolerance": 4.0000001e-06
+  },
+  "influence": {
+    "method": "reduced QR leverage; Cook distance from residuals and leverage",
+    "leverage_threshold_2p_over_n": 0.0016501031314457154,
+    "leverage_count": 1891,
+    "cook_threshold_4_over_n": 0.00015000937558597413,
+    "cook_count": 2061,
+    "candidate_union_count": 3284,
+    "top_cases": [
+      {
+        "Original row": 24152,
+        "Leverage": 0.0029638258684436896,
+        "Studentized residual": -4.759255317004056,
+        "Cook distance": 0.00306053320322098,
+        "Above 4/n Cook cutoff": true
+      },
+      {
+        "Original row": 25355,
+        "Leverage": 0.002505661538312492,
+        "Studentized residual": -4.73196392488837,
+        "Cook distance": 0.0025566550532631948,
+        "Above 4/n Cook cutoff": true
+      },
+      {
+        "Original row": 3210,
+        "Leverage": 0.0009299647105402602,
+        "Studentized residual": 7.6504964585089565,
+        "Cook distance": 0.0024764358998981607,
+        "Above 4/n Cook cutoff": true
+      },
+      {
+        "Original row": 24153,
+        "Leverage": 0.0030591827144270684,
+        "Studentized residual": -4.133690818791913,
+        "Cook distance": 0.0023833583130030644,
+        "Above 4/n Cook cutoff": true
+      },
+      {
+        "Original row": 25354,
+        "Leverage": 0.002573651124769327,
+        "Studentized residual": -4.33295375195394,
+        "Cook distance": 0.0022019845361394464,
+        "Above 4/n Cook cutoff": true
+      }
+    ]
+  },
+  "breusch_pagan": {
+    "statistic": 1622.332182639781,
+    "df": 21,
+    "p_value": 0.0,
+    "null": "constant conditional variance",
+    "regressors": "21 standardized Blocked Train predictors",
+    "caveat": "serial dependence can invalidate conventional chi-square p-value calibration"
+  },
+  "learning_curve": [
+    {
+      "Fraction": 0.1,
+      "Training rows": 2666,
+      "Training MAE": 4.313078847470837,
+      "Blocked Validation MAE": 3.7820335689965066
+    },
+    {
+      "Fraction": 0.25,
+      "Training rows": 6666,
+      "Training MAE": 4.17993325339824,
+      "Blocked Validation MAE": 3.5959580563619924
+    },
+    {
+      "Fraction": 0.5,
+      "Training rows": 13332,
+      "Training MAE": 4.245826294294205,
+      "Blocked Validation MAE": 3.617953323829712
+    },
+    {
+      "Fraction": 0.75,
+      "Training rows": 19999,
+      "Training MAE": 4.229738492632301,
+      "Blocked Validation MAE": 3.640909555163404
+    },
+    {
+      "Fraction": 1.0,
+      "Training rows": 26665,
+      "Training MAE": 4.2103655827379365,
+      "Blocked Validation MAE": 3.6590867944183305
+    }
+  ],
+  "lasso_validation_grid": [
+    {
+      "alpha": 0.0001,
+      "validation_mae": 3.6590834292609022,
+      "zero_coefficient_count_tol_1e-8": 0
+    },
+    {
+      "alpha": 0.0003,
+      "validation_mae": 3.65907797339074,
+      "zero_coefficient_count_tol_1e-8": 0
+    },
+    {
+      "alpha": 0.001,
+      "validation_mae": 3.6590759907747956,
+      "zero_coefficient_count_tol_1e-8": 0
+    },
+    {
+      "alpha": 0.003,
+      "validation_mae": 3.659173707992588,
+      "zero_coefficient_count_tol_1e-8": 0
+    },
+    {
+      "alpha": 0.01,
+      "validation_mae": 3.660195857489604,
+      "zero_coefficient_count_tol_1e-8": 0
+    },
+    {
+      "alpha": 0.03,
+      "validation_mae": 3.6628593659749638,
+      "zero_coefficient_count_tol_1e-8": 3
+    },
+    {
+      "alpha": 0.1,
+      "validation_mae": 3.6673478323296727,
+      "zero_coefficient_count_tol_1e-8": 5
+    }
+  ],
+  "selected_lasso_alpha": 0.001,
+  "selected_lasso_validation_mae": 3.6590759907747956,
+  "selected_lasso_zero_coefficients_tol_1e-8": 0,
+  "hist_gradient_boosting_validation_grid": [
+    {
+      "config": {
+        "learning_rate": 0.05,
+        "max_iter": 100,
+        "max_leaf_nodes": 15,
+        "l2_regularization": 1.0
+      },
+      "validation_mae": 5.479981210225553
+    },
+    {
+      "config": {
+        "learning_rate": 0.1,
+        "max_iter": 100,
+        "max_leaf_nodes": 15,
+        "l2_regularization": 1.0
+      },
+      "validation_mae": 5.053458663224039
+    },
+    {
+      "config": {
+        "learning_rate": 0.05,
+        "max_iter": 120,
+        "max_leaf_nodes": 31,
+        "l2_regularization": 1.0
+      },
+      "validation_mae": 5.01135318094884
+    }
+  ],
+  "selected_hist_gradient_boosting_config": {
+    "learning_rate": 0.05,
+    "max_iter": 120,
+    "max_leaf_nodes": 31,
+    "l2_regularization": 1.0
+  },
+  "selected_hist_gradient_boosting_validation_mae": 5.01135318094884,
+  "critical_cases_posthoc_test": [
+    {
+      "Original row": 39383,
+      "Actual": 46.758575,
+      "Prediction": 18.752011607296556,
+      "Residual": 28.006563392703445,
+      "Absolute residual": 28.006563392703445,
+      "Velocity norm": 0.8529685599217595,
+      "Acceleration norm": 45.697110415115276,
+      "Absolute target": 46.758575
+    },
+    {
+      "Original row": 43519,
+      "Actual": 61.302666,
+      "Prediction": 35.35115792162783,
+      "Residual": 25.95150807837217,
+      "Absolute residual": 25.95150807837217,
+      "Velocity norm": 1.7395479755985461,
+      "Acceleration norm": 47.750766575146045,
+      "Absolute target": 61.302666
+    },
+    {
+      "Original row": 35811,
+      "Actual": -33.981522,
+      "Prediction": -8.296218576275987,
+      "Residual": -25.68530342372401,
+      "Absolute residual": 25.68530342372401,
+      "Velocity norm": 0.9108732464701113,
+      "Acceleration norm": 24.707609645356083,
+      "Absolute target": 33.981522
+    },
+    {
+      "Original row": 43988,
+      "Actual": 28.680405,
+      "Prediction": 3.045744382562031,
+      "Residual": 25.63466061743797,
+      "Absolute residual": 25.63466061743797,
+      "Velocity norm": 0.5368637161012094,
+      "Acceleration norm": 35.22118414151654,
+      "Absolute target": 28.680405
+    },
+    {
+      "Original row": 35690,
+      "Actual": 46.350796,
+      "Prediction": 20.746290004541777,
+      "Residual": 25.604505995458226,
+      "Absolute residual": 25.604505995458226,
+      "Velocity norm": 0.6502607516227625,
+      "Acceleration norm": 42.33520901491009,
+      "Absolute target": 46.350796
+    }
+  ]
+}

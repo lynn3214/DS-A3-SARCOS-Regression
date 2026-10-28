@@ -354,7 +354,7 @@
   "interpretation": [
     "H1 supported on Blocked Test: OLS MAE (3.865) is lower than Dummy MAE (11.631).",
     "H2: Blocked Validation selected alpha=0.001; Ridge and OLS validation MAE are 3.659 and 3.659. The lack of meaningful Ridge improvement applies only to these tested models, this alpha grid, this dataset, and these evaluation protocols.",
-    "H3: high-acceleration Blocked Test MAE (4.464) exceeds low-acceleration MAE (3.133); high-absolute-torque MAE (6.177) exceeds low-absolute-torque MAE (3.292). Velocity-slice MAEs by increasing quartile are [4.697, 3.59, 3.446, 3.567]; they are non-monotonic, and low-velocity MAE (4.697) exceeds highest-velocity MAE (3.567). These are descriptive patterns; no physical mechanism is inferred.",
+    "H3: high-acceleration Blocked Test MAE (4.464) exceeds low-acceleration MAE (3.133); high-absolute-torque MAE (6.177) exceeds low-absolute-torque MAE (3.292). Velocity-slice MAEs by increasing quartile are [4.697, 3.59, 3.446, 3.567]; they are non-monotonic. Low-velocity MAE (4.697) exceeds highest-velocity MAE (3.567). These are descriptive patterns; no physical mechanism is inferred.",
     "Random Test OLS MAE is 3.947, compared with 3.865 for Blocked Test. They represent different holdout conditions; this difference alone does not identify its cause."
   ],
   "coefficient_abs_mean": {

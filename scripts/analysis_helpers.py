@@ -210,9 +210,11 @@ def _format_report_table(table: pd.DataFrame) -> pd.DataFrame:
     formatted = table.copy()
     for column in formatted.columns:
         if pd.api.types.is_numeric_dtype(formatted[column]):
+            lower_column = column.lower()
             if (
-                column.lower() in {"n", "count", "outside training min/max"}
-                or column.lower().startswith("outside ")
+                lower_column in {"n", "count", "outside training min/max", "original row"}
+                or lower_column.startswith("outside ")
+                or lower_column.endswith("rows")
             ):
                 formatted[column] = formatted[column].map(
                     lambda value: "—" if pd.isna(value) else f"{int(value):,}"
@@ -288,6 +290,7 @@ def write_pdf_report(
     coefficient_table: pd.DataFrame,
     figure_paths: list[str | Path],
     environment: dict[str, str],
+    supplemental: dict | None = None,
 ) -> None:
     """Export a self-contained report with concise tables and interpretations."""
     output_path = Path(output_path)
@@ -372,6 +375,41 @@ def write_pdf_report(
         ]
         for figure_path, (title, explanation) in zip(figure_paths, figure_notes):
             _add_figure_page(pdf, title, figure_path, explanation)
+
+        if supplemental is not None:
+            _add_report_page(pdf, "Additional Blocked OLS diagnostics", [
+                "Influence statistics are computed on Blocked Train using an OLS model fit to those rows. Leverage is the diagonal of the projection matrix computed from a reduced QR factorization; no full n-by-n matrix is formed. Cook's distance uses the standard squared-residual/leverage expression.",
+                "Heuristic flags use leverage > 2p/n and Cook's distance > 4/n. These thresholds identify observations for inspection; they do not establish data errors. The Breusch–Pagan auxiliary regression uses the 21 standardized predictors and training-fit squared residuals. Its null is constant conditional error variance. The conventional chi-square calibration assumes independent, correctly specified errors; strong serial dependence can make its p-value unreliable.",
+                "Compare the test residual-versus-fitted plot with this training-only test. Both are descriptive; the test statistic is not used to change models.",
+            ], [
+                (supplemental["diagnostics_summary"], [0.24, 0.25, 0.25, 0.26], 0.16),
+                (supplemental["influence_cases"], [0.19, 0.20, 0.20, 0.20, 0.21], 0.20),
+            ])
+
+            _add_figure_page(
+                pdf,
+                "OLS learning curve: Blocked Train and Validation",
+                supplemental["learning_curve_figure"],
+                "Each fixed subset is a nested sample from a seeded permutation of frozen Blocked Train rows. Training MAE is measured on the fitted subset; Validation MAE is measured on the same frozen Blocked Validation set at every size. The curve is descriptive under this sampling design, especially because the Blocked Validation region has a distinct low-motion distribution.",
+            )
+
+            _add_report_page(pdf, "Post-hoc Blocked Test error cases", [
+                "These are the five largest absolute residuals from the already evaluated Blocked Ridge model, ranked after the original evaluation. They are shown for descriptive inspection only and were not used to tune or select any model. Torque magnitude is outcome-conditioned; velocity and acceleration norms are input-derived.",
+                "Large residuals identify cases where this fitted model performed poorly in this held-out segment. The table does not establish a physical cause or imply that the observations are erroneous.",
+            ], [(supplemental["critical_cases"], [0.12, 0.11, 0.11, 0.11, 0.12, 0.12, 0.15, 0.16], 0.34)])
+
+            _add_report_page(pdf, "Exploratory Train/Validation model comparison", [
+                "Lasso and HistGradientBoostingRegressor are post-hoc exploratory candidates. Their alpha/configuration comparisons use only Blocked Train and Blocked Validation; the previously inspected Test was not used for their selection or tuning. Do not interpret their validation scores as confirmatory estimates.",
+                "Lasso zero coefficients are counted using the documented absolute tolerance. The fixed small HistGradientBoosting search provides one modest nonlinear comparison; its added flexibility costs interpretability and computation. Validation improvements, if any, are specific to this shifted validation region.",
+            ], [(supplemental["model_comparison"], [0.17, 0.20, 0.20, 0.20, 0.23], 0.30)])
+
+            _add_report_page(pdf, "Negative results and claim boundary", [
+                "Ridge's improvement over OLS was negligible in the original tested setting. The exploratory additions are validation-only and do not replace or revise the original reported Test results.",
+                "The near-complete overlap in the supplied historical SARCOS files is a data-provenance warning, not a usable independent benchmark: "
+                + supplemental["historical_overlap_text"],
+                "The project establishes predictive behavior only for these models, data, and frozen protocols. The Blocked Validation segment is markedly low-motion and unrepresentative of the other blocked partitions; this limits its usefulness for broader tuning. We therefore did not add blocked cross-validation or redesign tuning under the deadline. Serial dependence, unknown episode identifiers, and the local purge gap remain limitations.",
+                "Standardized regression coefficients summarize conditional linear associations under this fitted feature set, not physical parameters or causal effects. Correlated kinematic predictors make individual coefficients unstable to feature dependence. Inverse-dynamics prediction estimates torque from observed state; it does not estimate the effect of intervening on a joint state while controlling the physical system and confounders.",
+            ], [])
 
         _add_report_page(pdf, "Discussion, limitations, and conclusion", [
             "Conclusion: H1 is supported on the tested blocked evaluation. Ridge does not meaningfully improve on OLS under the tested models, alpha grid, dataset, and protocols. H3 is descriptive: high acceleration and high absolute torque slices have higher errors, while velocity error is non-monotonic.",

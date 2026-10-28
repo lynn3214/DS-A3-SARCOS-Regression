@@ -23,3 +23,21 @@ The Notebook completed without execution errors. I checked the frozen data split
 The key numerical results were consistent with the earlier execution, and the conclusions remained supported by the displayed evidence.
 
 This verification was performed manually after the AI-assisted implementation and automated testing.
+
+## Time-critical assignment extension
+
+The user supplied the detailed assignment brief requiring influence diagnostics, heteroscedasticity assessment, learning curves, critical error cases, complexity comparison, Lasso, a nonlinear candidate, an environment lock, and a short submission summary. Codex used that brief to identify the gaps and implement the requested additions while preserving the frozen splits and original Dummy/OLS/Ridge results.
+
+Accepted recommendations: compute training-only OLS leverage and Cook's distance without constructing a full projection matrix; add a training-residual Breusch–Pagan auxiliary regression with serial-dependence caveats; add a seeded Blocked Train/Validation learning curve; report post-hoc Test error cases without using them for selection; and compare Lasso and HistGradientBoostingRegressor using Train/Validation only. The absolute-target slice is explicitly described as retrospective and outcome-conditioned, and standardized coefficients are distinguished from physical or causal parameters.
+
+Recommendations not undertaken: no blocked cross-validation or extensive tuning redesign was added because the frozen Blocked Validation segment is a distinct low-motion region and cannot represent all blocked regions. No new candidate was evaluated or selected on Test, no original Test result was optimized, and no new model was used to revise the original conclusions.
+
+The earlier student verification above applies to the original submitted Notebook version only. No independent student verification of these new AI-assisted extensions is claimed. Codex executed the revised Notebook from a fresh kernel and ran the project validator and helper tests in `nussem1`; these automated checks are not student verification.
+
+## Automated checks for the time-critical extension
+
+- `conda run -n nussem1 jupyter nbconvert --to notebook --execute notebooks/DS_A3_regression_diagnostics.ipynb --output DS_A3_regression_diagnostics.executed.ipynb --output-dir /tmp --ExecutePreprocessor.timeout=600` — completed successfully from a clean kernel.
+- `conda run -n nussem1 python scripts/validate_project.py` — passed frozen split, hashes, and retained-result consistency checks.
+- `conda run -n nussem1 python -m unittest discover -s tests -v` — run; see the test command output associated with this revision.
+
+Codex-generated extensions and report artifacts were checked computationally against the specified protocols. A student should independently review the new methods and interpretations before submission; this record does not claim that such a review has occurred.
